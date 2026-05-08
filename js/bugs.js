@@ -1,10 +1,9 @@
 // Swooping bug animation — Motion-powered sine-wave paths, click-to-splat,
 // Web Audio squish sound, session-persistent splats, viewport counter.
 
-const BUG_SRCS  = ['Graphics/liam-bug.png', 'Graphics/nicole-bug.png'];
-const MAX_BUGS  = 2;
+const BUG_SRCS = ['Graphics/liam-bug.png', 'Graphics/nicole-bug.png'];
+const MAX_BUGS   = 2;
 const SPLAT_HALF = 45; // half of 90px splat SVG
-const BUG_SIZE  = 96;  // matches .bug CSS width/height
 
 let motionAnimate = null;
 let activeBugs    = 0;
@@ -50,7 +49,7 @@ function scheduleNext(delay) {
   clearTimeout(spawnTimer);
   spawnTimer = setTimeout(() => {
     if (!bookerInView && activeBugs < MAX_BUGS) spawnBug();
-    scheduleNext(3500 + Math.random() * 3000);
+    scheduleNext(3000 + Math.random() * 2500);
   }, delay);
 }
 
@@ -60,74 +59,34 @@ function spawnBug() {
   const layer = document.getElementById('bug-layer');
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  const margin = BUG_SIZE + 20; // start/end fully off-screen
 
-  // Pick a random edge to enter from (weighted to prefer left/right — more natural)
-  // 0=left, 1=right, 2=top, 3=bottom
-  const edgeRoll = Math.random();
-  const edge = edgeRoll < 0.35 ? 0 : edgeRoll < 0.70 ? 1 : edgeRoll < 0.85 ? 2 : 3;
+  // Direction: left-to-right or right-to-left
+  const ltr  = Math.random() > 0.5;
+  const startX = ltr ? -80 : vw + 80;
+  const endX   = ltr ? vw + 80 : -80;
 
-  let startX, startY, endX, endY;
-  const safeV = (size) => size * 0.1 + Math.random() * size * 0.8; // 10–90% of axis
+  // Vertical: random start position with slight overall drift
+  const startY = 80 + Math.random() * (vh - 160);
+  const endY   = startY + (Math.random() - 0.5) * 140;
 
-  switch (edge) {
-    case 0: // left → right
-      startX = -margin;    endX = vw + margin;
-      startY = safeV(vh);  endY = safeV(vh);
-      break;
-    case 1: // right → left
-      startX = vw + margin; endX = -margin;
-      startY = safeV(vh);   endY = safeV(vh);
-      break;
-    case 2: // top → bottom
-      startY = -margin;    endY = vh + margin;
-      startX = safeV(vw);  endX = safeV(vw);
-      break;
-    case 3: // bottom → top
-      startY = vh + margin; endY = -margin;
-      startX = safeV(vw);   endX = safeV(vw);
-      break;
-  }
+  // Per-bug variation in speed, swing height, oscillation frequency
+  const duration  = 6 + Math.random() * 4;        // 6–10s
+  const amplitude = 55 + Math.random() * 70;      // vertical swing px
+  const frequency = 1.8 + Math.random() * 1.5;   // sine cycles across trip
 
-  // Travel vector and its perpendicular (for sine-wave offset direction)
-  const dx   = endX - startX;
-  const dy   = endY - startY;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-  const nx   = -dy / dist; // perpendicular unit vector
-  const ny   =  dx / dist;
-
-  // Per-bug variation
-  const duration     = 10 + Math.random() * 8;       // 10–18s (was 6–10s)
-  const amplitude    = 80 + Math.random() * 100;      // 80–180px swing (was 55–125px)
-  const frequency    = 1.4 + Math.random() * 1.8;    // 1.4–3.2 sine cycles
-  const phaseOffset  = Math.random() * Math.PI * 2;  // random starting phase
-
-  // Build keyframe arrays — position + rotation following actual travel direction
+  // Build dense keyframe arrays for a smooth sine-wave arc
   const STEPS = 60;
-  const xFrames   = [];
-  const yFrames   = [];
-  const rotFrames = [];
-
+  const xFrames = [];
+  const yFrames = [];
   for (let i = 0; i <= STEPS; i++) {
-    const t    = i / STEPS;
-    const wave = Math.sin(t * Math.PI * frequency + phaseOffset) * amplitude;
-    const cx   = startX + dx * t + nx * wave;
-    const cy   = startY + dy * t + ny * wave;
-    xFrames.push(cx);
-    yFrames.push(cy);
-
-    // Rotation: point bug in the direction it's actually moving this frame
-    const t2    = Math.min(1, (i + 0.5) / STEPS);
-    const wave2 = Math.sin(t2 * Math.PI * frequency + phaseOffset) * amplitude;
-    const fx    = startX + dx * t2 + nx * wave2;
-    const fy    = startY + dy * t2 + ny * wave2;
-    const localAngle = Math.atan2(fy - cy, fx - cx) * (180 / Math.PI);
-    rotFrames.push(localAngle);
+    const t = i / STEPS;
+    xFrames.push(startX + (endX - startX) * t);
+    yFrames.push(startY + (endY - startY) * t + Math.sin(t * Math.PI * frequency) * amplitude);
   }
 
   // Build DOM element
   const bug = document.createElement('div');
-  bug.className  = 'bug';
+  bug.className = 'bug';
   bug.style.left = '0';
   bug.style.top  = '0';
 
@@ -135,6 +94,7 @@ function spawnBug() {
   img.src = BUG_SRCS[Math.floor(Math.random() * BUG_SRCS.length)];
   img.alt = '';
   img.setAttribute('draggable', 'false');
+  if (!ltr) img.style.transform = 'scaleX(-1)'; // flip for RTL travel
 
   bug.appendChild(img);
   layer.appendChild(bug);
@@ -150,12 +110,8 @@ function spawnBug() {
     doSplat(e.clientX, e.clientY);
   });
 
-  // Animate along the sine-wave path with live rotation
-  bug._anim = motionAnimate(
-    bug,
-    { x: xFrames, y: yFrames, rotate: rotFrames },
-    { duration, ease: 'linear' }
-  );
+  // Animate along the sine-wave path (Motion individual transforms)
+  bug._anim = motionAnimate(bug, { x: xFrames, y: yFrames }, { duration, ease: 'linear' });
 
   // Natural exit — clean up after bug leaves screen
   bug._anim.then(() => {

@@ -460,7 +460,7 @@ button {
 
 .bio-photos img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center top;
 }
@@ -704,8 +704,8 @@ button {
 /* Individual swooping bug */
 .bug {
   position: absolute;
-  width: 96px;
-  height: 96px;
+  width: 64px;
+  height: 64px;
   pointer-events: all;
   cursor: crosshair;
   user-select: none;
