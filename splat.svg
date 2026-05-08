@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="90" height="90">
+  <!-- Main splat body — irregular amoeba blob -->
+  <path d="M60 12 C72 8, 88 10, 96 22 C106 30, 108 44, 104 56 C112 62, 110 74, 102 80 C96 92, 82 100, 68 98 C56 104, 40 102, 30 92 C18 88, 10 74, 12 60 C8 48, 14 32, 24 24 C34 12, 48 10, 60 12Z" fill="#D4E642" stroke="#1a1a00" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Splatter drops radiating out -->
+  <ellipse cx="20" cy="24" rx="7" ry="5" transform="rotate(-30 20 24)" fill="#D4E642" stroke="#1a1a00" stroke-width="1.5"/>
+  <circle cx="98" cy="28" r="5" fill="#D4E642" stroke="#1a1a00" stroke-width="1.5"/>
+  <ellipse cx="108" cy="68" rx="6" ry="4" transform="rotate(15 108 68)" fill="#D4E642" stroke="#1a1a00" stroke-width="1.5"/>
+  <circle cx="22" cy="88" r="4" fill="#D4E642" stroke="#1a1a00" stroke-width="1.5"/>
+  <ellipse cx="60" cy="108" rx="5" ry="3.5" fill="#D4E642" stroke="#1a1a00" stroke-width="1.5"/>
+  <circle cx="84" cy="106" r="3" fill="#D4E642" stroke="#1a1a00" stroke-width="1.2"/>
+  <circle cx="14" cy="54" r="3.5" fill="#D4E642" stroke="#1a1a00" stroke-width="1.2"/>
+  <circle cx="76" cy="8" r="3" fill="#D4E642" stroke="#1a1a00" stroke-width="1.2"/>
+  <!-- Tiny satellite specks -->
+  <circle cx="34" cy="10" r="2" fill="#D4E642"/>
+  <circle cx="104" cy="44" r="2" fill="#D4E642"/>
+  <circle cx="10" cy="40" r="1.5" fill="#D4E642"/>
+  <circle cx="96" cy="96" r="2" fill="#D4E642"/>
+  <!-- Centre guts mark (darker) -->
+  <ellipse cx="58" cy="58" rx="14" ry="10" transform="rotate(-15 58 58)" fill="#b8cc00" opacity="0.6"/>
+</svg>

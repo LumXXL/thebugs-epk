@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Bugs — EPK</title>
+  <meta name="description" content="Toronto's #1 bug-themed electro-pop duo. Electroclash, dance-pop, theatrical live sets. Booking: bugsinclubs@gmail.com">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Bugs — EPK">
+  <meta property="og:description" content="Toronto's #1 bug-themed electro-pop duo. Booking: bugsinclubs@gmail.com">
+  <meta property="og:image" content="https://iamabug.netlify.app/Photos/Hero-Header-Image.jpg">
+  <meta property="og:url" content="https://iamabug.netlify.app">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Bugs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Bugs — EPK">
+  <meta name="twitter:description" content="Toronto's #1 bug-themed electro-pop duo. Booking: bugsinclubs@gmail.com">
+  <meta name="twitter:image" content="https://iamabug.netlify.app/Photos/Hero-Header-Image.jpg">
+
+  <!-- Fonts: IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Skip link for keyboard users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =============================================
+       1. HERO
+       ============================================= -->
+  <header class="hero" id="hero">
+    <div class="hero__wordmark">
+      <img
+        src="Graphics/The-bugs-scarywriting-stroke.png"
+        alt="The Bugs"
+        class="wordmark-img"
+      >
+    </div>
+    <div class="hero__photo">
+      <img
+        src="Photos/Hero-Header-Image.jpg"
+        alt="The Bugs — Nicole in foreground wearing bug sunglasses, Liam DJing in background"
+        class="hero-img"
+      >
+    </div>
+    <p class="hero__tagline">Canada's #1 bug-themed electro-pop duo</p>
+  </header>
+
+  <!-- =============================================
+       2. LISTEN
+       ============================================= -->
+  <section class="listen" id="main-content" tabindex="-1">
+    <h2 class="section-label">the bugs in your ear</h2>
+
+    <div class="tracks">
+
+      <!-- Track: Crawl -->
+      <article class="track-card" data-src="Music/crawl.mp3">
+        <div class="track-info">
+          <span class="track-title">Crawl</span>
+          <span class="track-note">unreleased. you'll hear it first.</span>
+        </div>
+        <div class="track-player">
+          <button class="play-btn" aria-label="Play Crawl" data-playing="false">
+            <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <div class="progress-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill"></div>
+              <input type="range" class="progress-input" min="0" max="100" value="0" step="0.1" aria-label="Seek through Crawl">
+            </div>
+            <div class="time-display">
+              <span class="time-current">0:00</span>
+              <span class="time-sep"> / </span>
+              <span class="time-total">—:——</span>
+            </div>
+          </div>
+        </div>
+        <audio preload="metadata">
+          <source src="Music/crawl.mp3" type="audio/mpeg">
+        </audio>
+      </article>
+
+      <!-- Track: Lightbulbs -->
+      <article class="track-card" data-src="Music/lightbulbs.mp3">
+        <div class="track-info">
+          <span class="track-title">Lightbulbs</span>
+          <span class="track-note">a song about how lightbulbs are scarier than nuclear war. correct, actually.</span>
+        </div>
+        <div class="track-player">
+          <button class="play-btn" aria-label="Play Lightbulbs" data-playing="false">
+            <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <div class="progress-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill"></div>
+              <input type="range" class="progress-input" min="0" max="100" value="0" step="0.1" aria-label="Seek through Lightbulbs">
+            </div>
+            <div class="time-display">
+              <span class="time-current">0:00</span>
+              <span class="time-sep"> / </span>
+              <span class="time-total">—:——</span>
+            </div>
+          </div>
+        </div>
+        <audio preload="metadata">
+          <source src="Music/lightbulbs.mp3" type="audio/mpeg">
+        </audio>
+      </article>
+
+    </div><!-- /tracks -->
+
+    <nav class="stream-links" aria-label="Streaming links">
+      <a href="https://liamsanagan.bandcamp.com/album/i-am-a-bug" class="stream-btn" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>
+        Bandcamp
+      </a>
+      <a href="https://open.spotify.com/artist/6Xm3DrbJXxOYLqTSeYaM37?si=0E-fLtVRTpKmWETZRgKYHA" class="stream-btn" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Spotify
+      </a>
+    </nav>
+  </section>
+
+  <!-- =============================================
+       3. WATCH
+       ============================================= -->
+  <section class="watch" id="watch">
+    <h2 class="section-label">watch</h2>
+
+    <!--
+    ================================================================
+    VIDEO CONFIG — to add real footage, replace each video-card's
+    .video-placeholder div with an actual <video> or <iframe> element.
+
+    Example for local video file:
+      <video controls preload="none" poster="Photos/your-thumbnail.jpg">
+        <source src="Video/your-clip.mp4" type="video/mp4">
+      </video>
+
+    Example for YouTube embed:
+      <iframe src="https://www.youtube.com/embed/YOUR_ID" allowfullscreen loading="lazy" title="Your title"></iframe>
+
+    Then update the <p class="video-caption"> text below each card.
+    ================================================================
+    -->
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-placeholder" aria-label="Video footage coming soon">
+          <span class="video-icon" aria-hidden="true">🎥</span>
+          <span class="video-label">footage incoming</span>
+        </div>
+        <p class="video-caption">live at BSMT254 — Nov 2025</p>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder" aria-label="Video footage coming soon">
+          <span class="video-icon" aria-hidden="true">🎥</span>
+          <span class="video-label">footage incoming</span>
+        </div>
+        <p class="video-caption">lightbulbs — music video</p>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder" aria-label="Video footage coming soon">
+          <span class="video-icon" aria-hidden="true">🎥</span>
+          <span class="video-label">footage incoming</span>
+        </div>
+        <p class="video-caption">live at Marcel Studios — Apr 2026</p>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder" aria-label="Video footage coming soon">
+          <span class="video-icon" aria-hidden="true">🎥</span>
+          <span class="video-label">footage incoming</span>
+        </div>
+        <p class="video-caption">DJ set — coming soon</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       4. BIO
+       ============================================= -->
+  <section class="bio" id="bio">
+    <h2 class="section-label">about</h2>
+    <div class="bio-layout">
+      <div class="bio-text">
+        <p>The Bugs are Toronto's #1 bug-themed dance-pop duo, formed in 2024 by producer Liam Sanagan and underground theatrical-punk performer Nicole Davis (Pizza Bush, My Chemical No Pants, Clown Wedding).</p>
+        <p>The music ranges from electroclash punk to slick techno pop. Live, Nicole owns the room: confrontational, theatrical, not afraid to get in your face.</p>
+        <p>Debut EP <em>I AM A BUG</em> out November 2025. LP in the works.</p>
+      </div>
+      <div class="bio-photos">
+        <img
+          src="Photos/crystalcastlesvibes.jpg"
+          alt="The Bugs performing live"
+          loading="lazy"
+        >
+        <img
+          src="Photos/P1010144.JPG"
+          alt="The Bugs"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       5. SHOWS
+       ============================================= -->
+  <section class="shows" id="shows">
+    <h2 class="section-label">shows</h2>
+
+    <div class="shows-grid">
+
+      <div class="shows-col">
+        <h3 class="shows-subhead">past</h3>
+        <ul class="shows-list">
+          <li class="show-item">
+            <span class="show-venue">Bampot House of Tea</span>
+            <span class="show-date">April 2025</span>
+          </li>
+          <li class="show-item">
+            <span class="show-venue">BSMT254</span>
+            <span class="show-date">November 2025</span>
+          </li>
+          <li class="show-item">
+            <span class="show-venue">Marcel Studios</span>
+            <span class="show-date">April 2026</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="shows-col">
+        <h3 class="shows-subhead">upcoming</h3>
+        <ul class="shows-list">
+          <li class="show-item show-item--next">
+            <div class="show-main">
+              <span class="show-venue">The Arcade</span>
+              <span class="show-city">Toronto</span>
+            </div>
+            <span class="show-date">May 23, 2026</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       6. FOR BOOKERS — intentional aesthetic break
+       ============================================= -->
+  <section class="bookers" id="bookers">
+    <div class="bookers-inner">
+      <h2 class="bookers-heading">For Bookers</h2>
+      <div class="bookers-body">
+        <p>The Bugs perform 20 or 30-minute live sets (vocals&nbsp;+ electronics), or 1-hour electroclash DJ sets with our songs mixed in. Tech needs are minimal: one vocal mic and a stereo input for laptop. Stage plot available on request.</p>
+        <p class="bookers-contact">Booking: <a href="mailto:bugsinclubs@gmail.com">bugsinclubs@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       7. FOOTER
+       ============================================= -->
+  <footer class="footer" id="footer">
+    <nav class="footer-links" aria-label="Social links">
+      <a href="https://www.instagram.com/thexbugsx/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="mailto:bugsinclubs@gmail.com" class="footer-link">bugsinclubs@gmail.com</a>
+    </nav>
+    <p class="footer-tagline">no managers, no agents, just bugs</p>
+  </footer>
+
+  <!-- =============================================
+       BUG COUNTER — fixed bottom-right
+       ============================================= -->
+  <div class="bug-counter" id="bug-counter" aria-live="polite" aria-atomic="true">
+    <span class="bug-count-label">Bugs squashed: <strong id="squash-count">0</strong></span>
+    <button class="bug-reset" id="bug-reset" aria-label="Reset all squashed bugs">🪰 reset</button>
+  </div>
+
+  <!-- Bug animation canvas — JS populates this -->
+  <div class="bug-layer" id="bug-layer" aria-hidden="true"></div>
+
+  <!-- main.js is an ES module; imports audio.js and bugs.js -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
