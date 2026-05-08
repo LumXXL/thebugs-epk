@@ -729,6 +729,23 @@ button {
 }
 
 /* ================================================================
+   RESPONSIVE — Narrow (≤ 900px)
+   At these widths height: 100% on the hero img stops resolving
+   correctly inside the flex container, creating a black void.
+   Absolute positioning locks it to its container reliably.
+   Desktop (> 900px) is untouched.
+   ================================================================ */
+@media (max-width: 900px) {
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 62% 20%;
+  }
+}
+
+/* ================================================================
    RESPONSIVE — Tablet (≤ 768px)
    ================================================================ */
 @media (max-width: 768px) {
