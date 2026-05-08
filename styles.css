@@ -753,6 +753,10 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
   .shows-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -770,10 +774,6 @@ button {
   .hero__tagline {
     font-size: 0.6rem;
     letter-spacing: 0.08em;
-  }
-
-  .video-grid {
-    grid-template-columns: 1fr;
   }
 
   .track-card {
