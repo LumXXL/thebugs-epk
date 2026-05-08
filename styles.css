@@ -169,10 +169,10 @@ button {
 
 /* Tagline strip at bottom */
 .hero__tagline {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--text-mid);
   text-align: center;
   padding: 0.9rem 1.5rem;
   border-top: 1px solid var(--border);
