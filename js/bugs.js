@@ -5,6 +5,10 @@ const BUG_SRCS = ['Graphics/liam-bug.png', 'Graphics/nicole-bug.png'];
 const MAX_BUGS   = 2;
 const SPLAT_HALF = 45; // half of 90px splat SVG
 
+// Preload squish sound — clone on each play so rapid clicks don't cut off
+const squishAudio = new Audio('InsectSquish_BU01.359.wav');
+squishAudio.preload = 'auto';
+
 let motionAnimate = null;
 let activeBugs    = 0;
 let squashCount   = 0;
@@ -151,40 +155,12 @@ function doSplat(x, y) {
   document.getElementById('squash-count').textContent = squashCount;
 }
 
-// ─── Squish sound (Web Audio API) ────────────────────────────────────────────
+// ─── Squish sound ────────────────────────────────────────────────────────────
 
 function playSquish() {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const dur = 0.22;
-
-    // Filtered white noise burst — sounds like a wet splat
-    const bufLen = Math.floor(ctx.sampleRate * dur);
-    const buf    = ctx.createBuffer(1, bufLen, ctx.sampleRate);
-    const data   = buf.getChannelData(0);
-    for (let i = 0; i < bufLen; i++) {
-      // Noise amplitude tapers off quickly (exponential decay envelope)
-      data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufLen, 1.4);
-    }
-
-    const src    = ctx.createBufferSource();
-    src.buffer   = buf;
-
-    const filter = ctx.createBiquadFilter();
-    filter.type  = 'lowpass';
-    filter.frequency.setValueAtTime(900, ctx.currentTime);
-    filter.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + dur);
-
-    const gain = ctx.createGain();
-    gain.gain.setValueAtTime(0.55, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
-
-    src.connect(filter);
-    filter.connect(gain);
-    gain.connect(ctx.destination);
-    src.start();
-    src.stop(ctx.currentTime + dur);
-  } catch (_) {
-    // AudioContext not available — fail silently
-  }
+    // Clone so rapid clicks don't cut each other off
+    const sfx = squishAudio.cloneNode();
+    sfx.play().catch(() => {});
+  } catch (_) {}
 }
