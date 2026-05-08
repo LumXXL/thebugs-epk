@@ -117,6 +117,7 @@ button {
 .watch,
 .bio,
 .shows,
+.bookers,
 .footer {
   border-top: 1px solid var(--border);
 }
@@ -544,11 +545,12 @@ button {
 }
 
 /* ================================================================
-   6. BOOKERS — deliberate aesthetic break
+   6. BOOKERS
    ================================================================ */
 .bookers {
-  background-color: var(--booker-bg);
-  padding: 7rem 2rem;
+  padding: 4rem 1.5rem 4.5rem;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .bookers-inner {
@@ -557,25 +559,25 @@ button {
 }
 
 .bookers-heading {
-  font-family: var(--sans);
+  font-family: var(--mono);
   font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--booker-dim);
+  color: var(--accent);
   margin-bottom: 2.5rem;
 }
 
 .bookers-body {
-  font-family: var(--sans);
-  color: var(--booker-text);
+  font-family: var(--mono);
+  color: var(--text);
 }
 
 .bookers-body p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.85;
   font-weight: 400;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .bookers-body p:last-child {
@@ -584,19 +586,16 @@ button {
 
 .bookers-contact {
   font-weight: 500;
-  font-size: 0.95rem !important;
+  font-size: 0.9rem !important;
 }
 
 .bookers-body a {
-  color: var(--booker-text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: #bbb;
-  transition: text-decoration-color 0.15s;
+  color: var(--accent);
+  transition: opacity 0.15s;
 }
 
 .bookers-body a:hover {
-  text-decoration-color: var(--booker-text);
+  opacity: 0.75;
 }
 
 /* ================================================================
@@ -785,10 +784,7 @@ button {
     font-size: 1rem;
   }
 
-  /* Booker section: extra bottom padding so text clears the fixed counter */
-  .bookers {
-    padding: 5rem 1.5rem 6rem;
-  }
+
 
   /* Footer: extra bottom padding so tagline clears the fixed counter */
   .footer {
