@@ -424,6 +424,8 @@ button {
    ================================================================ */
 .bio {
   padding: 4rem 1.5rem 4.5rem;
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
 .bio-layout {
