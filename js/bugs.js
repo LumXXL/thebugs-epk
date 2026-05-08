@@ -5,9 +5,18 @@ const BUG_SRCS = ['Graphics/liam-bug.png', 'Graphics/nicole-bug.png'];
 const MAX_BUGS   = 2;
 const SPLAT_HALF = 45; // half of 90px splat SVG
 
-// Preload squish sound — clone on each play so rapid clicks don't cut off
-const squishAudio = new Audio('InsectSquish_BU01.359.wav');
-squishAudio.preload = 'auto';
+// Web Audio API — pre-decoded buffer eliminates first-play decode latency
+let audioCtx    = null;
+let squishBuffer = null;
+
+async function preloadSquish() {
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const res = await fetch('InsectSquish_BU01.359.wav');
+    const buf = await res.arrayBuffer();
+    squishBuffer = await audioCtx.decodeAudioData(buf);
+  } catch (_) {}
+}
 
 let motionAnimate = null;
 let activeBugs    = 0;
@@ -42,6 +51,9 @@ export async function initBugs() {
     squashCount = 0;
     document.getElementById('squash-count').textContent = 0;
   });
+
+  // Pre-decode squish sound so first click fires instantly
+  preloadSquish();
 
   // Start the spawn loop
   scheduleNext(1800);
@@ -158,9 +170,12 @@ function doSplat(x, y) {
 // ─── Squish sound ────────────────────────────────────────────────────────────
 
 function playSquish() {
+  if (!audioCtx || !squishBuffer) return;
   try {
-    // Clone so rapid clicks don't cut each other off
-    const sfx = squishAudio.cloneNode();
-    sfx.play().catch(() => {});
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const source = audioCtx.createBufferSource();
+    source.buffer = squishBuffer;
+    source.connect(audioCtx.destination);
+    source.start(0);
   } catch (_) {}
 }
