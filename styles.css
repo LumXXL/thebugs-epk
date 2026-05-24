@@ -760,6 +760,11 @@ button {
 
   .video-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .video-card--featured {
+    margin-bottom: 0;
   }
 
   .shows-grid {
