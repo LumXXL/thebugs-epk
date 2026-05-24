@@ -380,6 +380,10 @@ button {
   flex-direction: column;
 }
 
+.video-card--featured {
+  grid-column: 1 / -1;
+}
+
 .video-placeholder {
   aspect-ratio: 16 / 9;
   background: var(--surface);
