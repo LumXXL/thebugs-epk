@@ -539,6 +539,22 @@ button {
   flex-shrink: 0;
 }
 
+.shows-booking {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.shows-booking a {
+  color: var(--accent);
+  transition: opacity 0.15s;
+}
+
+.shows-booking a:hover {
+  opacity: 0.75;
+}
+
 /* Upcoming show — accent highlight */
 .show-item--next .show-venue {
   color: var(--accent);
